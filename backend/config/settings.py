@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #adiconar os meus apps
-    'rest_Framework',
+    'rest_framework', #biblioteca que transforma o django numa API REST de forma fácil (consultar minhas anotaçoes)
     'chat',
     'data',
     
