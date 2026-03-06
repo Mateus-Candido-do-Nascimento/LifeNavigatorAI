@@ -1,0 +1,30 @@
+# Ambiente virtual
+venv/
+
+# Variáveis de ambiente (NUNCA subir!)
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Banco SQLite (usamos PostgreSQL)
+db.sqlite3
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+
+
+**Boas práticas de mensagem de commit:**
+
+| Prefixo | Uso |
+|---------|-----|
+| `feat:` | nova funcionalidade |
+| `fix:` | correção de bug |
+| `docs:` | documentação |
+| `refactor:` | refatoração |
+| `chore:` | configuração, setup |
