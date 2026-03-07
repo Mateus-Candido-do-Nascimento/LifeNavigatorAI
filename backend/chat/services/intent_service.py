@@ -1,9 +1,9 @@
-import google.generativeai as genai
+from groq import Groq
 import json
 from django.conf import settings
 
-# configura o Gemini com a chave do .env
-genai.configure(api_key=settings.GEMINI_API_KEY)
+# instancia o cliente Groq com a chave do .env
+client = Groq(api_key=settings.GROQ_API_KEY)
 
 
 def identificar_intencao(mensagem: str) -> dict:
@@ -21,8 +21,6 @@ def identificar_intencao(mensagem: str) -> dict:
         }
     """
 
-    # esse prompt instrui o Gemini a agir como um extrator de informações
-    # não como um assistente — ele só precisa retornar o JSON
     prompt = f"""
 Você é um extrator de informações. Analise a mensagem abaixo e retorne 
 APENAS um JSON válido, sem explicações, sem markdown, sem texto adicional.
@@ -44,11 +42,11 @@ Extraia as seguintes informações da mensagem:
 
 - "acoes": lista de ações necessárias para responder a pergunta.
    Opções disponíveis:
-   - "buscar_salario_por_cargo"      → quando pergunta sobre salário de um cargo
+   - "buscar_salario_por_cargo"        → quando pergunta sobre salário de um cargo
    - "buscar_salario_por_departamento" → quando pergunta sobre um departamento
-   - "listar_maiores_salarios"       → quando pergunta quais cargos pagam mais
-   - "calcular_custo_mensal"         → quando pergunta sobre custo de vida em SP
-   - "calcular_sobra_mensal"         → quando pergunta se consegue viver com X salário
+   - "listar_maiores_salarios"         → quando pergunta quais cargos pagam mais
+   - "calcular_custo_mensal"           → quando pergunta sobre custo de vida em SP
+   - "calcular_sobra_mensal"           → quando pergunta se consegue viver com X salário
 
 - "fora_do_escopo": true se a pergunta não tem nada a ver com 
    concurso público, salários ou custo de vida em SP. false caso contrário.
@@ -67,19 +65,31 @@ Retorne APENAS o JSON. Exemplo de saída esperada:
 """
 
     try:
-        model = genai.GenerativeModel("gemini-1.5-flash-002")
-        response = model.generate_content(prompt)
+        response = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",  # modelo gratuito do Groq
+            messages=[
+                {
+                    "role": "system",
+                    "content": "Você é um extrator de informações. Retorne APENAS JSON válido, sem markdown, sem explicações."
+                },
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ],
+            temperature=0.1,  # baixo — queremos respostas consistentes e precisas
+            max_tokens=300,   # JSON pequeno, não precisa de muito
+        )
 
-        # limpa a resposta — remove possíveis ```json ``` que o Gemini pode adicionar
-        texto = response.text.strip()
+        # extrai o texto da resposta
+        texto = response.choices[0].message.content.strip()
         texto = texto.replace("```json", "").replace("```", "").strip()
 
-        # converte o texto JSON em dicionário Python
+        # converte pra dicionário Python
         intencao = json.loads(texto)
         return intencao
 
     except Exception as e:
-        # se algo der errado, retorna uma intenção vazia segura
         return {
             "cargo": None,
             "departamento": None,
