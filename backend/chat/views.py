@@ -14,12 +14,15 @@ from .services.data_service import (
 from .services.prompt_builder import montar_prompt
 from .services.groq_service import gerar_resposta
 from .models import PerfilUsuario, Conversa, Mensagem
+import uuid
+
 
 
 class ChatView(APIView):
     def post(self, request):
+        
         mensagem = request.data.get("mensagem", "").strip()
-        session_id = request.data.get("session_id")
+        session_id = request.data.get("session_id") or str(uuid.uuid4())
 
         # valida se veio mensagem
         if not mensagem:
@@ -79,8 +82,11 @@ class ChatView(APIView):
 
 
 def _buscar_historico(session_id: str) -> list[dict]:
-    # busca as últimas 5 mensagens da conversa
     try:
+        # se não veio session_id válido, retorna vazio
+        if not session_id:
+            return []
+
         perfil = PerfilUsuario.objects.get(session_id=session_id)
         conversa = perfil.conversas.last()
         if not conversa:
@@ -96,8 +102,11 @@ def _buscar_historico(session_id: str) -> list[dict]:
 
 
 def _salvar_mensagem(session_id, mensagem, resposta, intencao, dados):
-    # salva perfil, conversa e mensagens no banco
     try:
+        # se não veio session_id válido, não salva
+        if not session_id:
+            return
+
         perfil, _ = PerfilUsuario.objects.get_or_create(
             session_id=session_id,
             defaults={
@@ -108,7 +117,6 @@ def _salvar_mensagem(session_id, mensagem, resposta, intencao, dados):
 
         conversa, _ = Conversa.objects.get_or_create(perfil=perfil)
 
-        # salva mensagem do usuário
         Mensagem.objects.create(
             conversa=conversa,
             role="user",
@@ -117,7 +125,6 @@ def _salvar_mensagem(session_id, mensagem, resposta, intencao, dados):
             dados_usados=dados,
         )
 
-        # salva resposta do agente
         Mensagem.objects.create(
             conversa=conversa,
             role="assistant",
@@ -125,5 +132,4 @@ def _salvar_mensagem(session_id, mensagem, resposta, intencao, dados):
         )
 
     except Exception as e:
-        # não quebra o fluxo se falhar ao salvar
         print(f"Erro ao salvar mensagem: {e}")
