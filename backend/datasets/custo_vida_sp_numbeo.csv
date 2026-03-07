@@ -1,0 +1,55 @@
+categoria,item,valor_brl,cidade,fonte,data_coleta
+alimentacao,Refeição restaurante simples,45.0,Sao Paulo,Numbeo,2026-03-04
+alimentacao,Refeição casal restaurante médio,220.0,Sao Paulo,Numbeo,2026-03-04
+alimentacao,Combo fast food,40.0,Sao Paulo,Numbeo,2026-03-04
+alimentacao,Cerveja doméstica (0.5L),12.0,Sao Paulo,Numbeo,2026-03-04
+alimentacao,Cerveja importada (0.33L),17.5,Sao Paulo,Numbeo,2026-03-04
+alimentacao,Cappuccino,10.98,Sao Paulo,Numbeo,2026-03-04
+alimentacao,Refrigerante (0.33L),6.72,Sao Paulo,Numbeo,2026-03-04
+alimentacao,Água (0.33L),4.62,Sao Paulo,Numbeo,2026-03-04
+mercado,Leite (1L),5.93,Sao Paulo,Numbeo,2026-03-04
+mercado,Pão de forma (500g),10.02,Sao Paulo,Numbeo,2026-03-04
+mercado,Arroz branco (1kg),7.13,Sao Paulo,Numbeo,2026-03-04
+mercado,Ovos (12 unidades),14.61,Sao Paulo,Numbeo,2026-03-04
+mercado,Queijo local (1kg),66.17,Sao Paulo,Numbeo,2026-03-04
+mercado,Filé de frango (1kg),26.37,Sao Paulo,Numbeo,2026-03-04
+mercado,Carne bovina (1kg),54.1,Sao Paulo,Numbeo,2026-03-04
+mercado,Maçã (1kg),14.87,Sao Paulo,Numbeo,2026-03-04
+mercado,Banana (1kg),9.79,Sao Paulo,Numbeo,2026-03-04
+mercado,Laranja (1kg),8.88,Sao Paulo,Numbeo,2026-03-04
+mercado,Tomate (1kg),10.06,Sao Paulo,Numbeo,2026-03-04
+mercado,Batata (1kg),7.45,Sao Paulo,Numbeo,2026-03-04
+mercado,Cebola (1kg),6.56,Sao Paulo,Numbeo,2026-03-04
+mercado,Alface (unidade),6.59,Sao Paulo,Numbeo,2026-03-04
+mercado,Água mineral (1.5L),4.46,Sao Paulo,Numbeo,2026-03-04
+mercado,Vinho médio (garrafa),50.0,Sao Paulo,Numbeo,2026-03-04
+mercado,Cerveja doméstica (0.5L garrafa),7.58,Sao Paulo,Numbeo,2026-03-04
+mercado,Cerveja importada (0.33L garrafa),13.44,Sao Paulo,Numbeo,2026-03-04
+mercado,Cigarro Marlboro (maço),14.5,Sao Paulo,Numbeo,2026-03-04
+mercado,Água (0.33L garrafa),4.62,Sao Paulo,Numbeo,2026-03-04
+transporte,Passagem unitária,5.1,Sao Paulo,Numbeo,2026-03-04
+transporte,Passe mensal transporte público,246.5,Sao Paulo,Numbeo,2026-03-04
+transporte,Taxi (tarifa inicial),6.55,Sao Paulo,Numbeo,2026-03-04
+transporte,Taxi (por km),4.25,Sao Paulo,Numbeo,2026-03-04
+transporte,Taxi (1h espera),51.0,Sao Paulo,Numbeo,2026-03-04
+transporte,Gasolina (1L),6.03,Sao Paulo,Numbeo,2026-03-04
+utilities,"Contas básicas apê 85m2 (luz, água, gás)",436.16,Sao Paulo,Numbeo,2026-03-04
+utilities,Plano celular mensal,84.75,Sao Paulo,Numbeo,2026-03-04
+utilities,Internet banda larga (60Mbps+),107.11,Sao Paulo,Numbeo,2026-03-04
+lazer,Academia (mensalidade),204.1,Sao Paulo,Numbeo,2026-03-04
+lazer,Aluguel quadra tênis (1h fim de semana),205.0,Sao Paulo,Numbeo,2026-03-04
+lazer,Cinema (ingresso),50.0,Sao Paulo,Numbeo,2026-03-04
+educacao,Escola particular integral (mensalidade),2562.89,Sao Paulo,Numbeo,2026-03-04
+educacao,Escola internacional (anuidade),87752.0,Sao Paulo,Numbeo,2026-03-04
+vestuario,Calça jeans Levis,329.93,Sao Paulo,Numbeo,2026-03-04
+vestuario,Vestido verão (Zara/HM),293.79,Sao Paulo,Numbeo,2026-03-04
+vestuario,Tênis Nike running,509.02,Sao Paulo,Numbeo,2026-03-04
+vestuario,Sapato social masculino,458.82,Sao Paulo,Numbeo,2026-03-04
+aluguel,Apê 1 quarto (centro),3469.11,Sao Paulo,Numbeo,2026-03-04
+aluguel,Apê 1 quarto (fora centro),2342.23,Sao Paulo,Numbeo,2026-03-04
+aluguel,Apê 3 quartos (centro),7467.5,Sao Paulo,Numbeo,2026-03-04
+aluguel,Apê 3 quartos (fora centro),4943.86,Sao Paulo,Numbeo,2026-03-04
+imovel,Preço m2 (centro),14751.9,Sao Paulo,Numbeo,2026-03-04
+imovel,Preço m2 (fora centro),11058.82,Sao Paulo,Numbeo,2026-03-04
+referencia,Salário médio líquido mensal,4313.13,Sao Paulo,Numbeo,2026-03-04
+referencia,Taxa de juros hipoteca anual (%),12.1,Sao Paulo,Numbeo,2026-03-04
