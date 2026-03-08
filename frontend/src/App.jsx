@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react"
 import axios from "axios"
 
 const SESSION_ID = crypto.randomUUID()
-const API_URL = import.meta.env.VITE_API_URL
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000"
 
 export default function App() {
   const [mensagens, setMensagens] = useState([
@@ -16,10 +16,10 @@ export default function App() {
   const [carregando, setCarregando] = useState(false)
   const fimDaListaRef = useRef(null)
 
-  // auto-scroll sempre que chegar nova mensagem
+  // auto-scroll quando nova mensagem é adicionada
   useEffect(() => {
     fimDaListaRef.current?.scrollIntoView({ behavior: "smooth" })
-  }, [mensagens])
+  }, [mensagens.length])
 
   async function enviarMensagem() {
     if (!input.trim() || carregando) return
@@ -99,7 +99,7 @@ export default function App() {
           ))}
 
           {carregando && (
-            <div className="flex justify-start">
+            <div key="loading-indicator" className="flex justify-start">
               <div className="bg-gray-700 text-gray-400 rounded-2xl rounded-bl-sm px-4 py-3 text-sm">
                 Analisando...
               </div>
