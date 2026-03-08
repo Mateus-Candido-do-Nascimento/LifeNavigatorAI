@@ -28,10 +28,9 @@ def _bloquear(motivo: str, resposta: str) -> dict:
 
 
 def _verificar_com_groq(mensagem: str) -> dict:
-    # camada 2 — Groq classifica casos ambíguos
     prompt = f"""
 Analise se essa mensagem é apropriada para um assistente especializado
-em concurso público e custo de vida em São Paulo.
+em concurso público, salários e custo de vida em São Paulo.
 
 Retorne APENAS um JSON válido, sem explicações:
 {{
@@ -40,13 +39,17 @@ Retorne APENAS um JSON válido, sem explicações:
     "resposta": "mensagem curta ao usuário se bloqueado, null se permitido"
 }}
 
-Bloquear se:
-- Pedir ajuda com fraude, corrupção ou atividades ilegais
-- Conter dados pessoais sensíveis (CPF, senha, conta bancária)
-- For completamente fora do escopo (receitas, esportes, entretenimento)
+Seja PERMISSIVO. Só bloquear se for CLARAMENTE:
+- Pedido de fraude, corrupção ou crime
+- Dados bancários, senhas ou documentos como CPF e RG
 
-Permitir se:
-- For sobre salários, concursos, custo de vida, carreira, finanças pessoais
+Permitir TUDO que envolva:
+- Salários, cargos, carreiras, empregos
+- Custo de vida, aluguel, despesas
+- Família, perfil de vida, decisões financeiras
+- Concurso público, setor público, setor privado
+- Perguntas vagas ou incompletas sobre esses temas
+- Saudações e conversas introdutórias
 
 Mensagem: "{mensagem}"
 """
