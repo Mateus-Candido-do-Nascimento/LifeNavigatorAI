@@ -117,4 +117,6 @@ LifeNavigatorAI/
 
 ## Autor
 
-Mateus Candido — Mackenzie University, 3º ano de Ciência da Computação
+Mateus Cândido  
+3º ano de Ciência da Computação — Universidade Presbiteriana Mackenzie  
+[LinkedIn](https://www.linkedin.com/in/mateus-c%C3%A2ndido-05b412265/) · [GitHub](https://github.com/Mateus-Candido-do-Nascimento)
