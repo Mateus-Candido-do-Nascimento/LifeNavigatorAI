@@ -21,6 +21,8 @@ import uuid
 class ChatView(APIView):
     def post(self, request):
         
+        
+        
         mensagem = request.data.get("mensagem", "").strip()
         session_id = request.data.get("session_id") or str(uuid.uuid4())
 
@@ -30,7 +32,11 @@ class ChatView(APIView):
                 {"erro": "Mensagem não pode ser vazia."},
                 status=status.HTTP_400_BAD_REQUEST
             )
-
+        SAUDACOES = ["alo", "olá", "oi", "hello", "bom dia", "boa tarde", "boa noite"]
+        if mensagem.lower().strip() in SAUDACOES:
+            return Response({
+        "resposta": "Olá! Como posso ajudar? Pode me contar sua situação — cargo, salário atual e perfil de vida (solteiro, família) — que faço uma análise completa pra você."
+    })
         # 1. guardrails — mensagem é segura?
         check = verificar_mensagem(mensagem)
         if not check["permitido"]:
